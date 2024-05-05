@@ -1,0 +1,61 @@
+{
+  "prescriptionsList": [
+    "Paracetamol",
+    "DF_118",
+    "Hydroxly",
+    "Morphine",
+    "Ibuprofen",
+    "Vitamin C"
+  ],
+  "diagnosisList": [],
+  "categoryList": ["pending", "completed"],
+
+  "staffs": [
+    { "username": "John", "password": "Doe" },
+    { "username": "Anna", "password": "Smith" },
+    { "username": "Peter", "password": "Jones" }
+  ],
+
+  "patients": [
+    {
+      "firstname": "samuel",
+      "lastname": "eberundu",
+      "gender": "male",
+      "uhs number": "542/16",
+      "docCategory": "",
+      "pharmCategory": "",
+      "prescriptions": [],
+      "diagnosis": []
+    },
+    {
+      "firstname": "tope",
+      "lastname": "james",
+      "gender": "male",
+      "uhs number": "343/15",
+      "docCategory": "",
+      "pharmCategory": "",
+      "prescriptions": [],
+      "diagnosis": []
+    },
+    {
+      "firstname": "Rims",
+      "lastname": "Alero",
+      "gender": "female",
+      "uhs number": "342/17",
+      "docCategory": "",
+      "pharmCategory": "",
+      "prescriptions": [],
+      "diagnosis": []
+    },
+    {
+      "firstname": "Blessing",
+      "lastname": "kehinde",
+      "gender": "female",
+      "uhs number": "561/17",
+      "docCategory": "",
+      "pharmCategory": "",
+      "prescriptions": [],
+      "diagnosis": []
+    }
+  ]
+}
