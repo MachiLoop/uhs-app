@@ -29,3 +29,23 @@ li {
 .nav-wrapper li:hover {
   background-color: #f7f7f7;
 }
+
+@media (max-width: 1023px) {
+  .patients-list--wrapper {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .patients-list--wrapper {
+    width: calc(100% - 264px);
+  }
+}
+
+/* 
+tab
+
+tr {
+  display: grid;
+  grid-template-columns: repeat(5, 120px);
+} */
