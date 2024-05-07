@@ -14,7 +14,11 @@ export default {
         "secondary-80": "#344335",
         "secondary-70": "#5C715E",
         "secondary-0": "#ECEFEC",
-        "secondary-5": "#ECEEEC"
+        "secondary-5": "#ECEEEC",
+        "green-success": "#DBFFDF",
+        "red-warning": "#FDDED4",
+        "green-50": "#2B8C34",
+        "red-50": "#B92020",
       },
     },
   },

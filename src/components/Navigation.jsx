@@ -5,13 +5,23 @@ import {
   faBars,
   faClose,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { MyContext } from "../App";
 
 const Navbar = () => {
+  const location = useLocation();
+  console.log(location);
+
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+  const { staffName } = useContext(MyContext);
+
+  console.log(staffName);
+
+  if (location.pathname == "/") return;
 
   return (
-    <div className="z-50 max-md:h-screen">
+    <div className="z-50 max-md:h-screen min-h-screen">
       <div
         className={`${
           mobileMenuVisible ? "block" : "hidden"
@@ -55,7 +65,7 @@ const Navbar = () => {
           <div className="flex gap-2 items-center border border-secondary-5 rounded-md mb-1  px-2 py-2 text-secondary-80">
             <img src="/images/Avatar.png" alt="" />
             <div>
-              <p className="font-semibold">Niphie Wizzy-Sam</p>
+              <p className="font-semibold">{staffName}</p>
               <p className="font-medium text-xs">University Health Services</p>
             </div>
             <FontAwesomeIcon

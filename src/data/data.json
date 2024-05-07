@@ -11,9 +11,24 @@
   "categoryList": ["pending", "completed"],
 
   "staffs": [
-    { "username": "John", "password": "Doe" },
-    { "username": "Anna", "password": "Smith" },
-    { "username": "Peter", "password": "Jones" }
+    {
+      "name": "Niphie Wizzy-Sam",
+      "username": "John",
+      "password": 12345678,
+      "role": "Doc"
+    },
+    {
+      "name": "Annabella Dorcas",
+      "username": "Anna",
+      "password": "Smith",
+      "role": "Pharm"
+    },
+    {
+      "name": "Peter Dury",
+      "username": "Peter",
+      "password": "Jones",
+      "role": "Accountant"
+    }
   ],
 
   "patients": [
@@ -21,9 +36,10 @@
       "firstname": "samuel",
       "lastname": "eberundu",
       "gender": "male",
-      "uhs number": "542/16",
-      "docCategory": "",
-      "pharmCategory": "",
+      "uhsNumber": "542/16",
+      "docCategory": "checked",
+      "pharmCategory": "checked",
+      "accountantCategory": "checked",
       "prescriptions": [],
       "diagnosis": []
     },
@@ -31,9 +47,10 @@
       "firstname": "tope",
       "lastname": "james",
       "gender": "male",
-      "uhs number": "343/15",
-      "docCategory": "",
-      "pharmCategory": "",
+      "uhsNumber": "343/15",
+      "docCategory": "pending",
+      "pharmCategory": "checked",
+      "accountantCategory": "pending",
       "prescriptions": [],
       "diagnosis": []
     },
@@ -41,9 +58,10 @@
       "firstname": "Rims",
       "lastname": "Alero",
       "gender": "female",
-      "uhs number": "342/17",
-      "docCategory": "",
-      "pharmCategory": "",
+      "uhsNumber": "342/17",
+      "docCategory": "pending",
+      "pharmCategory": "pending",
+      "accountantCategory": "pending",
       "prescriptions": [],
       "diagnosis": []
     },
@@ -51,9 +69,10 @@
       "firstname": "Blessing",
       "lastname": "kehinde",
       "gender": "female",
-      "uhs number": "561/17",
-      "docCategory": "",
-      "pharmCategory": "",
+      "uhsNumber": "561/17",
+      "docCategory": "checked",
+      "pharmCategory": "pending",
+      "accountantCategory": "pending",
       "prescriptions": [],
       "diagnosis": []
     }

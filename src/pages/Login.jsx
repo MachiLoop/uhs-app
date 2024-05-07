@@ -1,6 +1,34 @@
+import { useState } from "react";
+import data from "../data/data.json";
+import { useNavigate } from "react-router-dom";
+import { MyContext } from "../App"; // The context created above
+import { useContext } from "react";
+
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const { setStaffRole, setStaffName } = useContext(MyContext);
+
+  // console.log(staffRole);
+
+  const handleSubmitHandler = () => {
+    // e.preventDefault();
+    console.log("hello");
+    console.log(username, password);
+
+    data.staffs.forEach((staff) => {
+      if (username == staff.username && password == staff.password) {
+        setStaffRole(staff.role);
+        setStaffName(staff.name);
+        navigate("/patients");
+      }
+    });
+  };
+
   return (
-    <div className="grid grid-cols-2 h-screen max-md:grid-cols-1">
+    <div className="grid grid-cols-2 h-screen max-md:grid-cols-1 w-screen">
       <div className="logo-side text-center flex flex-col items-center justify-center max-md:hidden">
         <img src="/images/UI logo 2.png" alt="" />
         <p className="font-bold mt-4 font-alata text-2xl">
@@ -22,7 +50,7 @@ const Login = () => {
               Enter your details below to get Started
             </p>
           </div>
-          <form action="" className="flex flex-col gap-6">
+          <form action="POST" className="flex flex-col gap-6">
             <div className="flex flex-col ">
               <label htmlFor="username" className="text-secondary-80">
                 Username
@@ -33,6 +61,7 @@ const Login = () => {
                 name="username"
                 placeholder="Username"
                 className="w-72 text-secondary-50 border border-secondary-50 border-solid rounded-md h-9 py-2 px-3 placeholder-secondary-50"
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="flex flex-col">
@@ -43,6 +72,7 @@ const Login = () => {
                 id="password"
                 placeholder="Password"
                 className="w-72 text-secondary-50 border border-secondary-50 border-solid rounded-md h-9 py-2 px-3 placeholder-secondary-50"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <p className="font-medium text-secondary-80">
                 Forgot your password?
@@ -52,6 +82,10 @@ const Login = () => {
               type="submit"
               value="Log In"
               className="bg-secondary-50 py-2 text-white rounded-md"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSubmitHandler();
+              }}
             />
           </form>
         </div>
