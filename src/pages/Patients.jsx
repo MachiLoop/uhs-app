@@ -33,7 +33,7 @@ const Patients = () => {
                 <FontAwesomeIcon icon={faMagnifyingGlass} color="#96A397" />
               </div>
             </div>
-            <div className="py-2 px-5 pr-3 border border-secondary-50 rounded-lg text-gray-600 flex items-center justify-center gap-2">
+            <div className="py-2 px-5 pr-3 border border-custom-blue rounded-lg text-gray-600 flex items-center justify-center gap-2">
               <p className="text-custom-blue">Filters</p>
               <div className="">
                 <img src="/images/Vector.png" alt="" className="w-5 h-2" />
@@ -42,7 +42,7 @@ const Patients = () => {
           </div>
 
           <table className="w-11/12 text-sm max-sm:text-xs">
-            <thead>
+            <thead className="px-2">
               <tr className="grid grid-cols-5 gap-4 w-full text-left font-semibold text-custom-blue mb-3">
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -51,10 +51,10 @@ const Patients = () => {
                 <th>Category</th>
               </tr>
             </thead>
-            <tbody className="capitalize text-secondary-70 font-medium ">
+            <tbody className="capitalize text-secondary-70 font-medium flex flex-col gap-2">
               {filteredPatients.map((filteredPatient) => (
                 <tr
-                  className="grid grid-cols-5 gap-4 w-full py-3"
+                  className="grid grid-cols-5 gap-4 w-full py-3 hover:pl-2 items-center"
                   key={filteredPatient.uhsNumber}
                 >
                   <td>{filteredPatient.firstname}</td>

@@ -27,7 +27,15 @@ li {
 }
 
 .nav-wrapper li:hover {
-  background-color: #f7f7f7;
+  background-color: #ecefec;
+}
+
+tbody tr:hover {
+  background-color: #ecefec;
+  /* background-color: #f7f7f7; */
+
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 @media (max-width: 1023px) {
