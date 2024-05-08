@@ -38,15 +38,43 @@ tbody tr:hover {
   cursor: pointer;
 }
 
+.box-shadow {
+  box-shadow: 0px 16px 32px 0px hsla(0, 0%, 0%, 0.08),
+    0px 0px 1px 0px hsla(0, 0%, 0%, 0.25);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eceeec;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 @media (max-width: 1023px) {
-  .patients-list--wrapper {
+  .patients-list--wrapper,
+  .patient-details--wrapper {
     width: 100%;
   }
 }
 
 @media (min-width: 1024px) {
-  .patients-list--wrapper {
-    width: calc(100% - 264px);
+  .patients-list--wrapper,
+  .patient-details--wrapper {
+    width: calc(100% - 255px);
   }
 }
 

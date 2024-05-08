@@ -40,8 +40,40 @@
       "docCategory": "checked",
       "pharmCategory": "checked",
       "accountantCategory": "checked",
-      "prescriptions": [],
-      "diagnosis": []
+      "prescriptions": [
+        "Paracetamol",
+        "DF-118",
+        "Hydroxyl",
+        "Morphine",
+        "Ibuprofen",
+        "Vitamin C",
+        "Augmentin",
+        "Piriton"
+      ],
+      "diagnosis": [],
+      "servicesRendered": [
+        {
+          "service": "Appointment",
+          "staff": "Doctor",
+          "type": "Check-up",
+          "price": "#45000",
+          "category": "Pending"
+        },
+        {
+          "service": "Drugs",
+          "staff": "Pharmacist",
+          "type": "Paracematol",
+          "price": "#5000",
+          "category": "Pending"
+        },
+        {
+          "service": "Injections",
+          "staff": "Nurse",
+          "type": "Cefuroxim",
+          "price": "#25000",
+          "category": "Pending"
+        }
+      ]
     },
     {
       "firstname": "tope",
@@ -52,7 +84,30 @@
       "pharmCategory": "checked",
       "accountantCategory": "pending",
       "prescriptions": [],
-      "diagnosis": []
+      "diagnosis": [],
+      "servicesRendered": [
+        {
+          "service": "Appointment",
+          "staff": "Doctor",
+          "type": "Check-up",
+          "price": "#45000",
+          "category": "Pending"
+        },
+        {
+          "service": "Drugs",
+          "staff": "Pharmacist",
+          "type": "Paracematol",
+          "price": "#5000",
+          "category": "Pending"
+        },
+        {
+          "service": "Injections",
+          "staff": "Nurse",
+          "type": "Cefuroxim",
+          "price": "#25000",
+          "category": "Pending"
+        }
+      ]
     },
     {
       "firstname": "Rims",
@@ -63,7 +118,30 @@
       "pharmCategory": "pending",
       "accountantCategory": "pending",
       "prescriptions": [],
-      "diagnosis": []
+      "diagnosis": [],
+      "servicesRendered": [
+        {
+          "service": "Appointment",
+          "staff": "Doctor",
+          "type": "Check-up",
+          "price": "#45000",
+          "category": "Pending"
+        },
+        {
+          "service": "Drugs",
+          "staff": "Pharmacist",
+          "type": "Paracematol",
+          "price": "#5000",
+          "category": "Pending"
+        },
+        {
+          "service": "Injections",
+          "staff": "Nurse",
+          "type": "Cefuroxim",
+          "price": "#25000",
+          "category": "Pending"
+        }
+      ]
     },
     {
       "firstname": "Blessing",
@@ -74,7 +152,30 @@
       "pharmCategory": "pending",
       "accountantCategory": "pending",
       "prescriptions": [],
-      "diagnosis": []
+      "diagnosis": [],
+      "servicesRendered": [
+        {
+          "service": "Appointment",
+          "staff": "Doctor",
+          "type": "Check-up",
+          "price": "#45000",
+          "category": "Pending"
+        },
+        {
+          "service": "Drugs",
+          "staff": "Pharmacist",
+          "type": "Paracematol",
+          "price": "#5000",
+          "category": "Pending"
+        },
+        {
+          "service": "Injections",
+          "staff": "Nurse",
+          "type": "Cefuroxim",
+          "price": "#25000",
+          "category": "Pending"
+        }
+      ]
     }
   ]
 }
