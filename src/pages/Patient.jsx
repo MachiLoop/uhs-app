@@ -4,6 +4,7 @@ import data from "../data/data.json";
 import { MyContext } from "../App";
 import { useContext, useState } from "react";
 import Prescriptions from "../components/Prescriptions";
+import ServicesRendered from "../components/ServicesRendered";
 
 const Patient = () => {
   const { patiendId } = useParams();
@@ -18,7 +19,7 @@ const Patient = () => {
   console.log(patient);
 
   return (
-    <div className="patient-details--wrapper py-6">
+    <div className="patient-details--wrapper pt-6 flex flex-col ">
       <div className="pr-2">
         <PageIntro
           heading={`${patient.firstname} ${patient.lastname}`}
@@ -48,21 +49,8 @@ const Patient = () => {
       </div>
 
       {/* end card */}
-      {/* <div className="pl-6 pr-4 prescribed-drugs flex flex-col">
-        <p className="font-alata text-black mb-4">Prescribed Drugs</p>
-        <div className="box-shadow rounded-lg p-4 flex flex-col gap-2 max-h-64 overflow-auto font-medium text-secondary-80">
-          {patient.prescriptions.map((prescription) => (
-            <div className="flex gap-2 items-center mb-3">
-              <input type="checkbox" name={prescription} id={prescription} />
-              <label htmlFor={prescription}>{prescription}</label>
-            </div>
-          ))}
-        </div>
-        <button className="bg-custom-blue py-2 px-7 text-white rounded-lg font-medium text-sm self-end mt-8">
-          Dispense
-        </button>
-      </div> */}
-      <Prescriptions patient={patient} />
+      {/* <Prescriptions patient={patient} /> */}
+      <ServicesRendered patient={patient} />
     </div>
   );
 };

@@ -1,9 +1,4 @@
-import { useParams } from "react-router-dom";
-
 const Prescriptions = ({ patient }) => {
-  const { patiendId } = useParams();
-  console.log(patiendId);
-
   return (
     <div className="pl-6 pr-4 prescribed-drugs flex flex-col">
       <p className="font-alata text-black mb-4">Prescribed Drugs</p>
@@ -18,7 +13,7 @@ const Prescriptions = ({ patient }) => {
           </div>
         ))}
       </div>
-      <button className="bg-custom-blue py-2 px-7 text-white rounded-lg font-medium text-sm self-end mt-8">
+      <button className="bg-custom-blue py-2 px-7 text-white rounded-lg font-medium text-sm self-end mt-8 mb-6">
         Dispense
       </button>
     </div>
