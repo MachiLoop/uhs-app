@@ -5,6 +5,7 @@ import { MyContext } from "../App";
 import { useContext, useState } from "react";
 import Prescriptions from "../components/Prescriptions";
 import ServicesRendered from "../components/ServicesRendered";
+import HealthStatus from "../components/HealthStatus";
 
 const Patient = () => {
   const { patiendId } = useParams();
@@ -50,7 +51,8 @@ const Patient = () => {
 
       {/* end card */}
       {/* <Prescriptions patient={patient} /> */}
-      <ServicesRendered patient={patient} />
+      {/* <ServicesRendered patient={patient} /> */}
+      <HealthStatus />
     </div>
   );
 };
