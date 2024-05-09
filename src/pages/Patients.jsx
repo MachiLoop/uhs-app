@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MyContext } from "../App";
 import data from "../data/data.json";
 import PageIntro from "../components/PageIntro";
+import SearchBar from "../components/SearchBar";
+import FilterBar from "../components/FilterBar";
 
 const Patients = () => {
   const { staffRole, setStaffRole } = useContext(MyContext);
@@ -40,23 +40,8 @@ const Patients = () => {
       <div className="border border-secondary-0 p-4 rounded-lg overflow-x-auto">
         <div>
           <div className="flex gap-3 mb-6">
-            <div className=" relative w-full  text-gray-600">
-              <input
-                className="w-full border border-secondary-50 h-10 px-5 pl-10 rounded-lg text-sm focus:outline-none placeholder-secondary-50"
-                type="search"
-                name="search"
-                placeholder="Search"
-              />
-              <div className="absolute left-0 -top-2 mt-4 ml-4">
-                <FontAwesomeIcon icon={faMagnifyingGlass} color="#96A397" />
-              </div>
-            </div>
-            <div className="py-2 px-5 pr-3 border border-custom-blue rounded-lg text-gray-600 flex items-center justify-center gap-2">
-              <p className="text-custom-blue">Filters</p>
-              <div className="">
-                <img src="/images/Vector.png" alt="" className="w-5 h-2" />
-              </div>
-            </div>
+            <SearchBar />
+            <FilterBar />
           </div>
 
           <table className="w-11/12 text-sm max-sm:text-xs">
