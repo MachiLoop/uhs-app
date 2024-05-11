@@ -5,32 +5,29 @@ import data from "../data/data.json";
 import PageIntro from "../components/PageIntro";
 import SearchBar from "../components/SearchBar";
 import FilterBar from "../components/FilterBar";
+import useArrayObjectSearch from "../hooks/useArrayObjectSearch";
 
 const Patients = () => {
   const { staffRole, setStaffRole } = useContext(MyContext);
-  const [filteredPatients, setFilteredPatients] = useState(data.patients);
+  const [searchTermFromChild, setSearchTermFromChild] = useState("");
+  // const [filteredPatients, setFilteredPatients] = useState(data.patients);
+
+  const handleDataFromChild = (data) => {
+    setSearchTermFromChild(data);
+  };
+
+  const filteredPatients = useArrayObjectSearch(
+    data.patients,
+    searchTermFromChild
+  );
 
   const navigate = useNavigate();
   const handleTableClick = (filteredPatient) => {
     navigate(`/patients/${filteredPatient.uhsNumber.replace("/", "")}`);
   };
 
-  // <Link
-  //   to={`/patients/${filteredPatient.uhsNumber.replace("/", "")}`}
-  //   key={filteredPatient.uhsNumber}
-  // ></Link>;
   return (
     <div className="patients-list--wrapper pl-6 pr-2 py-6">
-      {/* <div className="font-semibold flex flex-col gap-4 border border-secondary-0 p-4 rounded-lg mb-6">
-         <h1 className="text-custom-blue text-xl">Patient List</h1>
-         <div>
-           <h2 className="text-base text-secondary-80">Welcome {staffRole}!</h2>
-           <p className="text-sm text-secondary-70">
-             Manage your patients and their health status
-         </p>
-         </div>
-       </div> */}
-
       <PageIntro
         heading="Patient List"
         message1={`Welcome ${staffRole}!`}
@@ -40,7 +37,7 @@ const Patients = () => {
       <div className="border border-secondary-0 p-4 rounded-lg overflow-x-auto">
         <div>
           <div className="flex gap-3 mb-6">
-            <SearchBar />
+            <SearchBar sendDataToParent={handleDataFromChild} />
             <FilterBar />
           </div>
 
