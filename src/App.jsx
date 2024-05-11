@@ -6,6 +6,7 @@ import { createContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import Patient from "./pages/Patient";
+import Drugs from "./pages/Drugs";
 
 export const MyContext = createContext();
 
@@ -55,6 +56,7 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/patients" element={<Patients />} />
             <Route path="/patients/:patiendId" element={<Patient />} />{" "}
+            <Route path="/drugs" element={<Drugs />} />
             {/* Dynamic route with userId parameter */}
           </Routes>
           {/* <Login /> */}

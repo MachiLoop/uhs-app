@@ -6,12 +6,13 @@ import { useContext, useState } from "react";
 import Prescriptions from "../components/Prescriptions";
 import ServicesRendered from "../components/ServicesRendered";
 import HealthStatus from "../components/HealthStatus";
+import PatientInfoCard from "../components/PatientInfoCard";
 
 const Patient = () => {
   const { patiendId } = useParams();
   console.log(patiendId);
 
-  // const { staffRole, setStaffRole } = useContext(MyContext);
+  const { staffRole, setStaffRole } = useContext(MyContext);
 
   const uhsNum = `${patiendId.slice(0, 3)}/${patiendId[3]}${patiendId[4]}`;
   console.log(uhsNum);
@@ -22,37 +23,41 @@ const Patient = () => {
   return (
     <div className="patient-details--wrapper pt-6 flex flex-col ">
       <div className="pr-2">
-        <PageIntro
-          heading={`${patient.firstname} ${patient.lastname}`}
-          message2="Serve those Medications!"
-          className="pr-2"
-        />
+        {staffRole == "Doc" ? (
+          <PageIntro
+            heading={`${patient.firstname} ${patient.lastname}`}
+            message2="Manage your patients and their health status"
+            message3="Complaints"
+            message4="Diagnois"
+            message5="Prescription"
+            className="pr-2"
+          />
+        ) : staffRole == "Pharm" ? (
+          <PageIntro
+            heading={`${patient.firstname} ${patient.lastname}`}
+            message2="Serve those Medications!"
+            className="pr-2"
+          />
+        ) : (
+          <PageIntro
+            heading={`${patient.firstname} ${patient.lastname}`}
+            message2="Any Discounts on these bills?"
+            className="pr-2"
+          />
+        )}
       </div>
 
       {/* middle card */}
-      <div className="font-semibold  border-y border-secondary-0  rounded-lg mb-6 ">
-        <div className="grid grid-cols-3 justify-between gap-12 w-11/12 max-md:w-full max-md:gap-4 ">
-          <div className="border-x border-secondary-0 rounded-md flex flex-col gap-6 py-4 pl-4">
-            <p className="text-secondary-50">Gender</p>
-            <p className="text-2xl text-secondary-80 max-md:text-sm">Male</p>
-          </div>
-          <div className="border-x border-secondary-0 rounded-md flex flex-col gap-6  py-4 pl-4">
-            <p className="text-secondary-50">Phone Number</p>
-            <p className="text-2xl text-secondary-80 max-md:text-sm">
-              08105472889
-            </p>
-          </div>
-          <div className="border-x border-secondary-0 rounded-md flex flex-col gap-6  py-4 pl-4">
-            <p className="text-secondary-50">UHS Number</p>
-            <p className="text-2xl text-secondary-80 max-md:text-sm">542/16</p>
-          </div>
-        </div>
-      </div>
+      <PatientInfoCard patient={patient} />
 
       {/* end card */}
-      {/* <Prescriptions patient={patient} /> */}
-      {/* <ServicesRendered patient={patient} /> */}
-      <HealthStatus />
+      {staffRole == "Doc" ? (
+        <HealthStatus />
+      ) : staffRole == "Pharm" ? (
+        <Prescriptions patient={patient} />
+      ) : (
+        <ServicesRendered patient={patient} />
+      )}
     </div>
   );
 };

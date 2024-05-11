@@ -12,6 +12,10 @@
   background-color: #a4afc4;
 }
 
+Link:hover {
+  background: none;
+}
+
 p,
 label,
 ::placeholder {
@@ -66,14 +70,16 @@ tbody tr:hover {
 
 @media (max-width: 1023px) {
   .patients-list--wrapper,
-  .patient-details--wrapper {
+  .patient-details--wrapper,
+  .drugs-list--wrapper {
     width: 100%;
   }
 }
 
 @media (min-width: 1024px) {
   .patients-list--wrapper,
-  .patient-details--wrapper {
+  .patient-details--wrapper,
+  .drugs-list--wrapper {
     width: calc(100% - 255px);
   }
 }

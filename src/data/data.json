@@ -8,12 +8,12 @@
     "Vitamin C",
     "Ampliclox",
     "Flagyl",
-    "Paracematol",
-    "DF_118",
-    "Hydroxly",
-    "Morphine",
-    "Ibuprofen",
-    "Vitamin C"
+    "Paracemato",
+    "DF_11",
+    "Hydroxl",
+    "Morphin",
+    "Ibuprofe",
+    "Vitamin"
   ],
   "diagnosisList": [
     "Typhoid",
@@ -24,15 +24,39 @@
     "Injury",
     "Sprain",
     "Fatigue",
-    "Typhoid",
-    "Malaria",
-    "Headache",
-    "Sickle Cell",
-    "Fever",
-    "Injury",
-    "Sprain",
-    "Fatigue"
+    "Typhoi",
+    "Malari",
+    "Headach",
+    "Sickle Cel",
+    "Feve",
+    "Injur",
+    "Sprai",
+    "Fatigu"
   ],
+
+  "drugsInfo": [
+    {
+      "name": "Piriton",
+      "family": "Antihisthamine",
+      "amount": 542
+    },
+    {
+      "name": "Augmentin",
+      "family": "Antibiotics",
+      "amount": 343
+    },
+    {
+      "name": "DF 118",
+      "family": "Pain-Killer",
+      "amount": 241
+    },
+    {
+      "name": "Hydroxyl",
+      "family": "Stimulant",
+      "amount": 197
+    }
+  ],
+
   "categoryList": ["pending", "completed"],
 
   "staffs": [
@@ -62,6 +86,7 @@
       "lastname": "eberundu",
       "gender": "male",
       "uhsNumber": "542/16",
+      "phoneNumber": "08105472889",
       "docCategory": "checked",
       "pharmCategory": "checked",
       "accountantCategory": "checked",
@@ -105,10 +130,11 @@
       "lastname": "james",
       "gender": "male",
       "uhsNumber": "343/15",
+      "phoneNumber": "09083651496",
       "docCategory": "pending",
       "pharmCategory": "checked",
       "accountantCategory": "pending",
-      "prescriptions": [],
+      "prescriptions": ["Ibuprofen", "Vitamin C", "Augmentin", "Piriton"],
       "diagnosis": [],
       "servicesRendered": [
         {
@@ -139,10 +165,11 @@
       "lastname": "Alero",
       "gender": "female",
       "uhsNumber": "342/17",
+      "phoneNumber": "09031500683",
       "docCategory": "pending",
       "pharmCategory": "pending",
       "accountantCategory": "pending",
-      "prescriptions": [],
+      "prescriptions": ["Ibuprofen", "Augmentin", "Piriton"],
       "diagnosis": [],
       "servicesRendered": [
         {
@@ -173,10 +200,11 @@
       "lastname": "kehinde",
       "gender": "female",
       "uhsNumber": "561/17",
+      "phoneNumber": "09080559481",
       "docCategory": "checked",
       "pharmCategory": "pending",
       "accountantCategory": "pending",
-      "prescriptions": [],
+      "prescriptions": ["Ibuprofen", "Vitamin C", "Augmentin"],
       "diagnosis": [],
       "servicesRendered": [
         {

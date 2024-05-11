@@ -8,6 +8,7 @@ import {
 import { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { MyContext } from "../App";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
@@ -36,23 +37,29 @@ const Navbar = () => {
               </p>
             </div>
             <nav className="text-secondary-80 flex flex-col gap-1">
-              <li className="pl-4 py-3 hover:bg-slate-500 hover:rounded-md">
+              <Link
+                to="/patients"
+                className="pl-4 py-3 hover:bg-secondary-0 hover:rounded-md"
+              >
                 <FontAwesomeIcon
                   icon={faUserGroup}
                   color="#96A397"
                   className="mr-2"
                 />
                 Patients
-              </li>
-              <li className="pl-4 py-3 hover:bg-slate-500 hover:rounded-md">
+              </Link>
+              <Link
+                to="/drugs"
+                className="pl-4 py-3 hover:bg-secondary-0 hover:rounded-md"
+              >
                 <FontAwesomeIcon
                   icon={faUserGroup}
                   color="#96A397"
                   className="mr-2"
                 />
-                Diagnosis
-              </li>
-              <li className="pl-4 py-3 hover:bg-slate-500 hover:rounded-md">
+                Drugs
+              </Link>
+              <li className="pl-4 py-3 hover:bg-secondary-0 hover:rounded-md">
                 <FontAwesomeIcon
                   icon={faUserGroup}
                   color="#96A397"
