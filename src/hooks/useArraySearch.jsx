@@ -11,7 +11,7 @@ const useArraySearch = (dataArray, searchTerm) => {
 
     const filteredResults = dataArray.filter((item) => {
       if (typeof item === "string") {
-        return item.toLowerCase().includes(query.toLowerCase());
+        return item.toLowerCase().includes(searchTerm.toLowerCase());
       } else if (typeof item === "object") {
         // Assuming the objects have string values to search
         for (const key in item) {
