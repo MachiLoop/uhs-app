@@ -1,12 +1,24 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MyContext } from "../App";
 import PageIntro from "../components/PageIntro";
 import SearchBar from "../components/SearchBar";
 import FilterBar from "../components/FilterBar";
 import data from "../data/data.json";
+import useArraySearch from "../hooks/useArraySearch";
 
 const Drugs = () => {
   const { staffRole, setStaffRole } = useContext(MyContext);
+
+  // BEGIN - FOR SEARCH HOOK
+  const [searchTermFromChild, setSearchTermFromChild] = useState("");
+
+  const handleDataFromChild = (data) => {
+    setSearchTermFromChild(data);
+  };
+
+  const filteredDrugsInfo = useArraySearch(data.drugsInfo, searchTermFromChild);
+
+  // END - FOR SEACH HOOK
 
   return (
     <div className="drugs-list--wrapper pt-2 flex flex-col">
@@ -18,7 +30,7 @@ const Drugs = () => {
 
       <div className="pt-3 flex flex-col px-4 border-t border-l rounded-tl-lg  grow shrink basis-auto">
         <div className="flex gap-3 mb-6">
-          <SearchBar />
+          <SearchBar sendDataToParent={handleDataFromChild} />
           <FilterBar />
         </div>
         <table className="w-full text-sm max-sm:text-xs ">
@@ -30,7 +42,7 @@ const Drugs = () => {
             </tr>
           </thead>
           <tbody className="capitalize text-secondary-70 font-medium flex flex-col gap-2 max-h-64 overflow-auto">
-            {data.drugsInfo.map((drugInfo) => (
+            {filteredDrugsInfo.map((drugInfo) => (
               <tr
                 className="grid grid-cols-3 gap-4 w-full py-3 hover:pl-2 items-center"
                 key={drugInfo.name + drugInfo.family}

@@ -5,21 +5,20 @@ import data from "../data/data.json";
 import PageIntro from "../components/PageIntro";
 import SearchBar from "../components/SearchBar";
 import FilterBar from "../components/FilterBar";
-import useArrayObjectSearch from "../hooks/useArrayObjectSearch";
+import useArraySearch from "../hooks/useArraySearch";
+// import useArrayObjectSearch from "../hooks/useArraySearch";
 
 const Patients = () => {
   const { staffRole, setStaffRole } = useContext(MyContext);
-  const [searchTermFromChild, setSearchTermFromChild] = useState("");
   // const [filteredPatients, setFilteredPatients] = useState(data.patients);
+
+  const [searchTermFromChild, setSearchTermFromChild] = useState("");
 
   const handleDataFromChild = (data) => {
     setSearchTermFromChild(data);
   };
 
-  const filteredPatients = useArrayObjectSearch(
-    data.patients,
-    searchTermFromChild
-  );
+  const filteredPatients = useArraySearch(data.patients, searchTermFromChild);
 
   const navigate = useNavigate();
   const handleTableClick = (filteredPatient) => {
