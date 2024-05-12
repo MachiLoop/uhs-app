@@ -3,10 +3,10 @@ import SearchBar from "./SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import data from "../data/data.json";
-
 import ListPopup from "./ListPopup";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useArraySearch from "../hooks/useArraySearch";
+import { MyContext } from "../App";
 
 const HealthStatus = () => {
   console.log(data.diagnosisList);
@@ -14,6 +14,7 @@ const HealthStatus = () => {
   // BEGIN - FOR SEARCH HOOK
   const [diagnosisTermFromChild, setDiagnosisTermFromChild] = useState("");
   const [prescTermFromChild, setPrescTermFromChild] = useState("");
+  const { diagnosisVisibility, prescriptionVisibility } = useContext(MyContext);
 
   const handleDiagnosisDataFromChild = (data) => {
     setDiagnosisTermFromChild(data);
@@ -31,7 +32,7 @@ const HealthStatus = () => {
     data.prescriptionsList,
     prescTermFromChild
   );
-  // END - FOR SEACH HOOK
+  // END - FOR SEARCH HOOK
 
   return (
     <div className="px-5 flex flex-col grow shrink basis-auto justify-between">
@@ -40,17 +41,21 @@ const HealthStatus = () => {
           <p className="font-alata text-black mb-2">Diagnosis</p>
           <div className="flex gap-4">
             <SearchBar sendDataToParent={handleDiagnosisDataFromChild} />
-            <DropdownBar />
+            <DropdownBar dropdownFor="diagnosis" />
           </div>
-          <ListPopup items={filteredDiagnosisList} />
+          <div className={`${diagnosisVisibility ? "block" : "hidden"}`}>
+            <ListPopup items={filteredDiagnosisList} />
+          </div>
         </div>
         <div>
           <p className="font-alata text-black mb-2">Prescriptions</p>
           <div className="flex gap-4">
             <SearchBar sendDataToParent={handlePrescDataFromChild} />
-            <DropdownBar />
+            <DropdownBar dropdownFor="prescription" />
           </div>
-          <ListPopup items={filteredPrescriptionsList} />
+          <div className={`${prescriptionVisibility ? "block" : "hidden"}`}>
+            <ListPopup items={filteredPrescriptionsList} />
+          </div>
         </div>
       </div>
       <button className="bg-custom-blue py-3 px-7 text-white rounded-lg font-medium text-sm  mb-6 w-72 self-center flex items-center gap-2 justify-center">

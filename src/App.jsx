@@ -30,6 +30,9 @@ function App() {
     getInitialValue(localStorageNameKey, "")
   );
 
+  const [diagnosisVisibility, setDiagnosisVisibility] = useState(false);
+  const [prescriptionVisibility, setPrescriptionVisibility] = useState(false);
+
   // Update local storage whenever state1 changes
   useEffect(() => {
     localStorage.setItem(localStorageRoleKey, JSON.stringify(staffRole));
@@ -45,7 +48,16 @@ function App() {
 
   return (
     <MyContext.Provider
-      value={{ staffRole, setStaffRole, staffName, setStaffName }}
+      value={{
+        staffRole,
+        setStaffRole,
+        staffName,
+        setStaffName,
+        diagnosisVisibility,
+        setDiagnosisVisibility,
+        prescriptionVisibility,
+        setPrescriptionVisibility,
+      }}
     >
       <BrowserRouter>
         <div className="font-urbanist flex">
