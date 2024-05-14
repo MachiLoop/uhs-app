@@ -1,7 +1,7 @@
 import DropdownBar from "./DropdownBar";
 import SearchBar from "./SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
+import { faFloppyDisk, faXmark } from "@fortawesome/free-solid-svg-icons";
 import data from "../data/data.json";
 import ListPopup from "./ListPopup";
 import { useContext, useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { collection, getDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../config/firebase";
 import useFetchPatientData from "../hooks/useFetchPatientData";
+import CancelIcon from "./CancelIcon";
 
 const HealthStatus = () => {
   const { patiendId } = useParams();
@@ -99,9 +100,15 @@ const HealthStatus = () => {
             )}
           </div>
           {diagnosis.length >= 1 ? (
-            <div>
+            <div className="flex gap-8 mt-4 uppercase font-medium">
               {diagnosis.map((diag) => (
-                <p key={diag + Math.round(Math.random() + 5)}>{diag}</p>
+                <div
+                  key={diag + Math.round(Math.random() + 5)}
+                  className="flex gap-2 w-fit pl-2  shadow-lg"
+                >
+                  <p>{diag}</p>
+                  <CancelIcon item={diag} category="diagnosis" docId={docId} />
+                </div>
               ))}
             </div>
           ) : null}
@@ -122,9 +129,19 @@ const HealthStatus = () => {
             )}
           </div>
           {prescriptions.length >= 1 ? (
-            <div>
+            <div className="flex gap-8 mt-4 uppercase font-medium mb-4">
               {prescriptions.map((presc) => (
-                <p key={presc + Math.round(Math.random() + 5)}>{presc}</p>
+                <div
+                  key={presc + Math.round(Math.random() + 5)}
+                  className="flex gap-2 w-fit pl-2  shadow-lg"
+                >
+                  <p>{presc}</p>
+                  <CancelIcon
+                    item={presc}
+                    category="prescriptions"
+                    docId={docId}
+                  />
+                </div>
               ))}
             </div>
           ) : null}
