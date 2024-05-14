@@ -10,6 +10,7 @@ import { MyContext } from "../App";
 import { useParams } from "react-router-dom";
 import { collection, getDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../config/firebase";
+import useFetchPatientData from "../hooks/useFetchPatientData";
 
 const HealthStatus = () => {
   const { patiendId } = useParams();
@@ -45,37 +46,39 @@ const HealthStatus = () => {
   console.log(patient.uhsNumber);
   const { prescriptions, setPrescriptions } = useContext(MyContext);
   const { diagnosis, setDiagnosis } = useContext(MyContext);
-  const [docId, setDocId] = useState("");
+  const { docId, setDocId } = useContext(MyContext);
 
-  const patientsRef = collection(db, "patients");
-  const patientsDoc = query(
-    patientsRef,
-    where("uhsNumber", "==", patient.uhsNumber)
-  );
-
-  console.log(patientsDoc);
-
-  const getPatient = async () => {
-    const data = await getDocs(patientsDoc);
-    let prescriptionArray, diagnosisArray;
-    let id = data.docs[0].id;
-
-    data.docs.map((doc) => {
-      console.log(doc.data().prescriptions);
-      console.log(doc.data().diagnosis);
-      prescriptionArray = doc.data().prescriptions;
-      diagnosisArray = doc.data().diagnosis;
-    });
-
-    setPrescriptions([...prescriptionArray]);
-    setDiagnosis([...diagnosisArray]);
-    setDocId(id);
-  };
+  // const patientsRef = collection(db, "patients");
+  // const patientsDoc = query(
+  //   patientsRef,
+  //   where("uhsNumber", "==", patient.uhsNumber)
+  // );
 
   // console.log(patientsDoc);
-  useEffect(() => {
-    getPatient();
-  }, []);
+
+  // const getPatient = async () => {
+  //   const data = await getDocs(patientsDoc);
+  //   let prescriptionArray, diagnosisArray;
+  //   let id = data.docs[0].id;
+
+  //   data.docs.map((doc) => {
+  //     console.log(doc.data().prescriptions);
+  //     console.log(doc.data().diagnosis);
+  //     prescriptionArray = doc.data().prescriptions;
+  //     diagnosisArray = doc.data().diagnosis;
+  //   });
+
+  //   setPrescriptions([...prescriptionArray]);
+  //   setDiagnosis([...diagnosisArray]);
+  //   setDocId(id);
+  // };
+
+  // // console.log(patientsDoc);
+  // useEffect(() => {
+  //   getPatient();
+  // }, []);
+
+  useFetchPatientData(patient.uhsNumber);
 
   return (
     <div className="px-5 flex flex-col grow shrink basis-auto justify-between">

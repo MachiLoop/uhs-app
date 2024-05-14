@@ -3,34 +3,36 @@ import { db } from "../config/firebase";
 import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { MyContext } from "../App";
+import useFetchPatientData from "../hooks/useFetchPatientData";
 
 const Prescriptions = ({ patient }) => {
   console.log(patient.uhsNumber);
   const { prescriptions, setPrescriptions } = useContext(MyContext);
 
-  const patientsRef = collection(db, "patients");
-  const patientsDoc = query(
-    patientsRef,
-    where("uhsNumber", "==", patient.uhsNumber)
-  );
+  // const patientsRef = collection(db, "patients");
+  // const patientsDoc = query(
+  //   patientsRef,
+  //   where("uhsNumber", "==", patient.uhsNumber)
+  // );
 
-  const getPatient = async () => {
-    const data = await getDocs(patientsDoc);
-    let dataArray;
-    // console.log(data);
+  // const getPatient = async () => {
+  //   const data = await getDocs(patientsDoc);
+  //   let dataArray;
+  //   // console.log(data);
 
-    data.docs.map((doc) => {
-      console.log(doc.data().prescriptions);
-      dataArray = doc.data().prescriptions;
-    });
+  //   data.docs.map((doc) => {
+  //     console.log(doc.data().prescriptions);
+  //     dataArray = doc.data().prescriptions;
+  //   });
 
-    setPrescriptions([...dataArray]);
-  };
+  //   setPrescriptions([...dataArray]);
+  // };
 
-  // console.log(patientsDoc);
-  useEffect(() => {
-    getPatient();
-  }, []);
+  // // console.log(patientsDoc);
+  // useEffect(() => {
+  //   getPatient();
+  // }, []);
+  useFetchPatientData(patient.uhsNumber);
 
   // useEffect(() => console.log(prescriptions?.length), [prescriptions]);
 
