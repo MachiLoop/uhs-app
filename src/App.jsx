@@ -32,6 +32,8 @@ function App() {
 
   const [diagnosisVisibility, setDiagnosisVisibility] = useState(false);
   const [prescriptionVisibility, setPrescriptionVisibility] = useState(false);
+  const [prescriptions, setPrescriptions] = useState([]);
+  const [diagnosis, setDiagnosis] = useState([]);
 
   // Update local storage whenever state1 changes
   useEffect(() => {
@@ -57,6 +59,10 @@ function App() {
         setDiagnosisVisibility,
         prescriptionVisibility,
         setPrescriptionVisibility,
+        prescriptions,
+        setPrescriptions,
+        diagnosis,
+        setDiagnosis,
       }}
     >
       <BrowserRouter>
