@@ -1,4 +1,4 @@
-import { getDocs, collection, query, where } from "firebase/firestore";
+import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useContext, useEffect } from "react";
 import { useState } from "react";
@@ -8,6 +8,8 @@ import useFetchPatientData from "../hooks/useFetchPatientData";
 const Prescriptions = ({ patient }) => {
   console.log(patient.uhsNumber);
   const { prescriptions, setPrescriptions } = useContext(MyContext);
+  const { docId, setDocId } = useContext(MyContext);
+  console.log(docId);
 
   // const patientsRef = collection(db, "patients");
   // const patientsDoc = query(
@@ -32,9 +34,45 @@ const Prescriptions = ({ patient }) => {
   // useEffect(() => {
   //   getPatient();
   // }, []);
+
+  // const handleDispenseDrugs = () => {
+  //   console.log("hello");
+  // };
+
   useFetchPatientData(patient.uhsNumber);
 
+  console.log(prescriptions.length);
+
   // useEffect(() => console.log(prescriptions?.length), [prescriptions]);
+  const [checkedValues, setCheckedValues] = useState([]);
+
+  // Function to handle checkbox change
+  const handleCheckboxChange = (value) => {
+    if (checkedValues.includes(value)) {
+      // If value already exists in the array, remove it
+      setCheckedValues(checkedValues.filter((item) => item !== value));
+    } else {
+      // If value doesn't exist in the array, add it
+      setCheckedValues([...checkedValues, value]);
+    }
+  };
+
+  const handleDispenseDrugs = () => {
+    const docRefs = doc(db, "patients", docId);
+    updateDoc(docRefs, {
+      prescriptions: prescriptions.filter(
+        (pres) => !checkedValues.includes(pres)
+      ),
+    }).then(() => {
+      setPrescriptions(
+        prescriptions.filter((pres) => !checkedValues.includes(pres))
+      );
+    });
+  };
+
+  useEffect(() => {
+    console.log(checkedValues);
+  }, [checkedValues]);
 
   return (
     <div className="pl-6 pr-4 prescribed-drugs flex flex-col">
@@ -42,12 +80,15 @@ const Prescriptions = ({ patient }) => {
 
       {prescriptions?.length >= 1 ? (
         <div className="box-shadow rounded-lg p-4 flex flex-col gap-2 max-h-64 overflow-auto font-medium text-secondary-80">
-          {prescriptions.map((prescription) => (
-            <div
-              className="flex gap-2 items-center mb-3"
-              key={prescription.slice(0, 3) + Math.round(Math.random(0, 1) + 5)}
-            >
-              <input type="checkbox" name={prescription} id={prescription} />
+          {prescriptions.map((prescription, index) => (
+            <div className="flex gap-2 items-center mb-3" key={index}>
+              <input
+                type="checkbox"
+                name={prescription}
+                id={prescription}
+                checked={checkedValues.includes(prescription)}
+                onChange={() => handleCheckboxChange(prescription)}
+              />
               <label htmlFor={prescription}>{prescription}</label>
             </div>
           ))}
@@ -56,7 +97,10 @@ const Prescriptions = ({ patient }) => {
         <div>No prescription for this patient</div>
       )}
 
-      <button className="bg-custom-blue py-2 px-7 text-white rounded-lg font-medium text-sm self-end mt-8 mb-6">
+      <button
+        className="bg-custom-blue py-2 px-7 text-white rounded-lg font-medium text-sm self-end mt-8 mb-6"
+        onClick={handleDispenseDrugs}
+      >
         Dispense
       </button>
     </div>
