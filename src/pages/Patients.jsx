@@ -30,7 +30,11 @@ const Patients = () => {
       <PageIntro
         heading="Patient List"
         message1={`Welcome ${staffRole}!`}
-        message2="Manage your patients and their health status"
+        message2={
+          staffRole != "Accountant"
+            ? "Manage your patients and their health status"
+            : "Manage your patient bills"
+        }
       />
 
       <div className="border border-secondary-0 p-4 rounded-lg overflow-x-auto">
