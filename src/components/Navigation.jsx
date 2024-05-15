@@ -26,7 +26,7 @@ const Navbar = () => {
       <div
         className={`${
           mobileMenuVisible ? "block" : "hidden"
-        } md:block nav-wrapper px-3 py-4 border-r border-secondary-0 h-screen max-md:fixed top-0 bg-white`}
+        } md:block nav-wrapper px-3 py-4 border-r border-secondary-0 h-full max-md:fixed top-0 bg-white`}
       >
         <div className="flex justify-between flex-col h-full">
           <div className="flex flex-col gap-4">
