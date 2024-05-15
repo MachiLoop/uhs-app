@@ -3,11 +3,14 @@ import data from "../data/data.json";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../App"; // The context created above
 import { useContext } from "react";
+import useNotification from "../hooks/useNotification";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  let isSignedIn = false;
   const navigate = useNavigate();
+  const { notify } = useNotification();
 
   const { setStaffRole, setStaffName } = useContext(MyContext);
 
@@ -22,9 +25,15 @@ const Login = () => {
       if (username == staff.username && password == staff.password) {
         setStaffRole(staff.role);
         setStaffName(staff.name);
+        isSignedIn = true;
+        notify("Login successfull", { type: "success" });
         navigate("/patients");
       }
     });
+
+    !isSignedIn
+      ? notify("Wrong username or password", { type: "error" })
+      : null;
   };
 
   return (

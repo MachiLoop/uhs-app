@@ -37,7 +37,7 @@ const ServicesRendered = ({ patient }) => {
           </tbody>
         </table>
         <button className="bg-custom-blue py-2 px-7 text-white rounded-lg font-medium text-sm self-end mt-8 mb-6">
-          Dispense
+          Payment Verified
         </button>
       </div>
     </div>

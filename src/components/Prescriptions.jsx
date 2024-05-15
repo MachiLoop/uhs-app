@@ -4,11 +4,13 @@ import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { MyContext } from "../App";
 import useFetchPatientData from "../hooks/useFetchPatientData";
+import useNotification from "../hooks/useNotification";
 
 const Prescriptions = ({ patient }) => {
   console.log(patient.uhsNumber);
   const { prescriptions, setPrescriptions } = useContext(MyContext);
   const { docId, setDocId } = useContext(MyContext);
+  const { notify } = useNotification();
   console.log(docId);
 
   // const patientsRef = collection(db, "patients");
@@ -63,11 +65,15 @@ const Prescriptions = ({ patient }) => {
       prescriptions: prescriptions.filter(
         (pres) => !checkedValues.includes(pres)
       ),
-    }).then(() => {
-      setPrescriptions(
-        prescriptions.filter((pres) => !checkedValues.includes(pres))
-      );
-    });
+    })
+      .then(() => {
+        setPrescriptions(
+          prescriptions.filter((pres) => !checkedValues.includes(pres))
+        );
+      })
+      .then(() => {
+        notify("Dispensed", { type: "success" });
+      });
   };
 
   useEffect(() => {

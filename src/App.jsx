@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Patient from "./pages/Patient";
 import Drugs from "./pages/Drugs";
+import { ToastContainer } from "react-toastify";
 
 export const MyContext = createContext();
 
@@ -81,6 +82,7 @@ function App() {
             {/* Dynamic route with userId parameter */}
           </Routes>
           {/* <Login /> */}
+          <ToastContainer />
         </div>
       </BrowserRouter>
     </MyContext.Provider>

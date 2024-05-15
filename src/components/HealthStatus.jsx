@@ -7,11 +7,12 @@ import ListPopup from "./ListPopup";
 import { useContext, useEffect, useState } from "react";
 import useArraySearch from "../hooks/useArraySearch";
 import { MyContext } from "../App";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { collection, getDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../config/firebase";
 import useFetchPatientData from "../hooks/useFetchPatientData";
 import CancelIcon from "./CancelIcon";
+import useNotification from "../hooks/useNotification";
 
 const HealthStatus = () => {
   const { patiendId } = useParams();
@@ -48,6 +49,8 @@ const HealthStatus = () => {
   const { prescriptions, setPrescriptions } = useContext(MyContext);
   const { diagnosis, setDiagnosis } = useContext(MyContext);
   const { docId, setDocId } = useContext(MyContext);
+  const { notify } = useNotification();
+  const navigate = useNavigate();
 
   // const patientsRef = collection(db, "patients");
   // const patientsDoc = query(
@@ -80,6 +83,11 @@ const HealthStatus = () => {
   // }, []);
 
   useFetchPatientData(patient.uhsNumber);
+
+  const handleSaveHealthStatus = () => {
+    notify("Saved", { type: "success" });
+    navigate("/patients");
+  };
 
   return (
     <div className="px-5 flex flex-col grow shrink basis-auto justify-between">
@@ -147,7 +155,10 @@ const HealthStatus = () => {
           ) : null}
         </div>
       </div>
-      <button className="bg-custom-blue py-3 px-7 text-white rounded-lg font-medium text-sm  mb-6 w-72 self-center flex items-center gap-2 justify-center">
+      <button
+        className="bg-custom-blue py-3 px-7 text-white rounded-lg font-medium text-sm  mb-6 w-72 self-center flex items-center gap-2 justify-center"
+        onClick={handleSaveHealthStatus}
+      >
         <span>Save</span>
         <FontAwesomeIcon icon={faFloppyDisk} />
       </button>
