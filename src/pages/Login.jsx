@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { MyContext } from "../App"; // The context created above
 import { useContext } from "react";
 import useNotification from "../hooks/useNotification";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -11,9 +13,8 @@ const Login = () => {
   let isSignedIn = false;
   const navigate = useNavigate();
   const { notify } = useNotification();
-
   const { setStaffRole, setStaffName } = useContext(MyContext);
-
+  const [passwordVisible, setPasswordVisible] = useState(false);
   // console.log(staffRole);
 
   const handleSubmitHandler = () => {
@@ -75,14 +76,22 @@ const Login = () => {
             </div>
             <div className="flex flex-col">
               <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-                className="w-72 text-secondary-50 border border-secondary-50 border-solid rounded-md h-9 py-2 px-3 placeholder-secondary-50"
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              <div className="relative">
+                <input
+                  type={passwordVisible ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  className="w-72 text-secondary-50 border border-secondary-50 border-solid rounded-md h-9 py-2 px-3 placeholder-secondary-50"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <FontAwesomeIcon
+                  icon={passwordVisible ? faEye : faEyeSlash}
+                  className="absolute right-2 translate-y-1/2"
+                  style={{ color: "#99A5BD" }}
+                  onClick={() => setPasswordVisible(!passwordVisible)}
+                />
+              </div>
               <p className="font-medium text-secondary-80">
                 Forgot your password?
               </p>
