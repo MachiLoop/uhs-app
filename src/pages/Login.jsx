@@ -86,7 +86,7 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <FontAwesomeIcon
-                  icon={passwordVisible ? faEye : faEyeSlash}
+                  icon={passwordVisible ? faEyeSlash : faEye}
                   className="absolute right-2 translate-y-1/2"
                   style={{ color: "#99A5BD" }}
                   onClick={() => setPasswordVisible(!passwordVisible)}

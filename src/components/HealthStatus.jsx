@@ -109,9 +109,9 @@ const HealthStatus = () => {
           </div>
           {diagnosis.length >= 1 ? (
             <div className="flex gap-8 mt-4 uppercase font-medium">
-              {diagnosis.map((diag) => (
+              {diagnosis.map((diag, index) => (
                 <div
-                  key={diag + Math.round(Math.random() + 5)}
+                  key={diag + index}
                   className="flex gap-2 w-fit pl-2  shadow-lg"
                 >
                   <p>{diag}</p>
@@ -138,9 +138,9 @@ const HealthStatus = () => {
           </div>
           {prescriptions.length >= 1 ? (
             <div className="flex gap-8 mt-4 uppercase font-medium mb-4">
-              {prescriptions.map((presc) => (
+              {prescriptions.map((presc, index) => (
                 <div
-                  key={presc + Math.round(Math.random() + 5)}
+                  key={presc + index}
                   className="flex gap-2 w-fit pl-2  shadow-lg"
                 >
                   <p>{presc}</p>
